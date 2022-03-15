@@ -3,7 +3,7 @@ import ItemForm from "./ItemForm";
 import Filter from "./Filter";
 import Item from "./Item";
 
-function ShoppingList({ items }) {
+function ShoppingList({ items, onItemFormSubmit}) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const [searchText, setSearchText] = useState("");
@@ -19,21 +19,17 @@ function ShoppingList({ items }) {
       item.name.toLowerCase().includes(searchText.toLowerCase())
     );
 
-    // const newItem = {
-    //   id: uuid(), // the `uuid` library can be used to generate a unique id
-    //   name: itemName,
-    //   category: itemCategory,
-    // };
-    function handleAddItem(e) {
-      e.preventDefault()
-      const name = e.target.elements[0].value
-      console.log(name)
+    
+    // function handleAddItem(e) {
+    //   e.preventDefault()
+    //   const name = e.target.elements[0].value
+    //   console.log(name)
 
-    }
+    // }
 
   return (
     <div className="ShoppingList">
-      <ItemForm onItemFormSubmit={handleAddItem}/>
+      <ItemForm onItemFormSubmit={onItemFormSubmit}/>
       <Filter
         searchText={searchText}
         onSearchTextChange={setSearchText}
